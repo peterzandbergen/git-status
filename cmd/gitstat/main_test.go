@@ -3,6 +3,8 @@ package main
 import (
 	"os"
 	"testing"
+
+	"github.com/go-git/go-git/v5"
 )
 
 func TestDir(t *testing.T) {
@@ -26,3 +28,16 @@ func TestMyDir(t *testing.T) {
 	}
 }
 
+func TestConfigRemote(t *testing.T) {
+	// open the repo
+	repo, err := git.PlainOpen("../../")
+	if err != nil {
+		t.Fatalf("error opening repo: %s", err)
+	}
+	cfg, err := repo.Config()
+	if err != nil {
+		t.Fatalf("error getting config: %s", err)
+	}
+	_ = cfg
+
+}
